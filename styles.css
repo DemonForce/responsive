@@ -1,98 +1,179 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
 }
 
-html, body {
-  font-family: 'Press Start 2P', cursive;
-  color: #44da31;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  text-align: center;
-  overflow-x: hidden;
+body {
+    background-color: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 60px; /* Espacio para la navbar */
 }
 
-header {
-  background-color: #333;
-  color: #fff;
-  width: 100%;
-  padding: 10px 0;
+/* Navbar Styling */
+.navbar {
+    background-color: #1a1a1a;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+.logo {
+    color: #f0ff00;
+    font-size: 14px;
 }
 
-nav ul li {
-  margin: 0 15px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
 
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+.nav-links a:before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #f0ff00;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-.content {
-  max-width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.nav-links a:hover:before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+/* Footer Styling */
 footer {
-  background-color: #333;
-  color: #fff;
-  width: 100%;
-  padding: 10px 0;
-  text-align: center;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    font-size: 10px;
 }
 
-h1 {
-  font-size: 3vw; /* Ajusta este valor según sea necesario */
+/* Button Container and Button Styles */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px); /* Resta la altura de la navbar y el footer */
+    width: 100%;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-  body {
-      text-align: center;
-      white-space: normal;
-  }
-
-  nav ul {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  nav ul li {
-      margin: 1px 0;
-  }
-
-  main {
-      padding: 20px;
-  }
-
-  h1 {
-    font-size: 6vw; /* Ajusta este valor según sea necesario */
-  }
+.neon-button {
+    background-color: #1a1a1a;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 15px 30px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.4s ease;
+    box-shadow: 0 0 10px #f0ff00, 0 0 20px #f0ff00, 0 0 30px #f0ff00, 0 0 40px #f0ff00;
+    font-family: 'Press Start 2P', cursive;
 }
 
+.neon-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f0ff00;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
 
+.neon-button:hover {
+    color: #000;
+}
+
+.neon-button:hover:before {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #1a1a1a;
+        width: 100%;
+        text-align: right;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .button-container {
+        height: calc(100vh - 160px); /* Ajusta el espacio restante para móviles */
+    }
+}
 
 
