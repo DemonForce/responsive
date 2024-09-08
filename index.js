@@ -1,15 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-    function detectDevice() {
-        if (window.innerWidth <= 768) {
-            document.body.classList.add('mobile');
-        } else {
-            document.body.classList.remove('mobile');
-        }
-    }
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
 
-    window.addEventListener('resize', detectDevice);
-    detectDevice();
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
 });
 
+function detectMobile() {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        document.body.style.backgroundColor = '#111'; // Cambia el fondo si es móvil
+    } else {
+        document.body.style.backgroundColor = '#0a0a0a'; // Fondo para escritorio
+    }
+}
 
-
+window.onload = detectMobile;
